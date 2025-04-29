@@ -5,3 +5,4 @@ def get_response(text):
         return "またね〜！"
     else:
         return "ごめん、よくわからないや"
+
