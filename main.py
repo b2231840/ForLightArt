@@ -10,3 +10,14 @@ with sr.Microphone() as source:
         print("認識結果:", text)
     except sr.UnknownValueError:
         print("認識できませんでした")
+
+
+def get_response(text):
+    if "こんにちは" in text:
+        return "こんにちは！今日はどうですか？"
+    elif "さようなら" in text:
+        return "またね〜！"
+    else:
+        return "ごめん、よくわからないや"
+
+
