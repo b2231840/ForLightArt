@@ -27,7 +27,7 @@ def get_response(text):
 engine = pyttsx3.init()
 
 ## 日本語音声があったらそれを選択
-for voice in engin.getProperty('voices'):
+for voice in engine.getProperty('voices'):
 	if "Japanese" in voice.name or "Haruka" in voice.name:
 		engine.setProperty('voice',voice.id)
 		break
