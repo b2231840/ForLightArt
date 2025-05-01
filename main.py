@@ -22,6 +22,8 @@ def get_response(text):
     else:
         return "ごめん、よくわからないや"
 
+##返答をいれる
+talkText = get_response(text)
 
 ##voice_output
 engine = pyttsx3.init()
@@ -33,4 +35,5 @@ for voice in engine.getProperty('voices'):
 		break
 
 engine.say("こんにちは、私はオフラインのAIです。")
+engine.say(talkText)
 engine.runAndWait()
