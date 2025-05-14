@@ -13,7 +13,7 @@ with sr.Microphone() as source:
         print("認識結果:", text)
     except sr.UnknownValueError:
         print("認識できませんでした")
-        system.exit(0)
+        exit(0)
 
 ##responce
 from transformers import AutoTokenizer, AutoModelForCausalLM
