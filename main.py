@@ -50,7 +50,9 @@ for voice in engine.getProperty('voices'):
 		break
 
 ##engine.say("こんにちは、私はオフラインのAIです。")
-engine.say(get_response(text)) ##responseの関数で返答
+res = get_response(text)
+engine.say(res) ##responseの関数で返答
+print("返答結果：",res)
 engine.runAndWait()
 
 
