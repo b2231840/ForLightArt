@@ -20,15 +20,15 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
 # モデルとトークナイザの読み込み
-tokenizer = AutoTokenizer.from_pretrained("rinna/japanese-gpt-1b")
-model = AutoModelForCausalLM.from_pretrained("rinna/japanese-gpt-1b")
+tokenizer = AutoTokenizer.from_pretrained("rinna/japanese-gpt2-medium")
+model = AutoModelForCausalLM.from_pretrained("rinna/japanese-gpt2-medium")
 
 def get_response(text):
     input_ids = tokenizer.encode(text, return_tensors="pt")
     with torch.no_grad():
         output = model.generate(
             input_ids,
-            max_length=100, #生成トークンの最大長
+            max_length=300, #生成トークンの最大長
             do_sample=True, #ランダム性を持つかどうか
             top_p=0.95, #より自然に
             temperature=0.8, #ランダム性の度合い
@@ -50,9 +50,9 @@ for voice in engine.getProperty('voices'):
 		break
 
 ##engine.say("こんにちは、私はオフラインのAIです。")
-##res = get_response(text)
-engine.say(get_response(text)) ##responseの関数で返答
-print("返答結果：",get_response(text))
+res = get_response(text)
+engine.say(res) ##responseの関数で返答
+print("返答結果：",res)
 engine.runAndWait()
 
 
