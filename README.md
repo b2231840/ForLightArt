@@ -21,3 +21,7 @@ Pythonで作成し、音声認識・音声合成・簡単な会話応答に対�
 - [PyAudio](https://pypi.org/project/PyAudio/)
 - [pyttsx3](https://pypi.org/project/pyttsx3/) または [gTTS](https://pypi.org/project/gTTS/)
 - 任意で：OpenAI API（ChatGPT）や Whisper など
+
+## 🙏 参考
+
+-https://qiita.com/namn1125/items/bc81f12f7bcfb2494c9c (2025/06/17参照)
