@@ -63,7 +63,8 @@ def generate_and_responce(model,toknizer,input_ids,max_length,engine):
         responces += output_str
 
         #結果を表示
-        engine.say(output_str.replace("<NL>","\n"), end='', flush = True)
+        engine.say(output_str)
+        print(output_str.replace("<NL>","\n"), end='', flush = True)
 
         #終了
         if "</s>" in output_str:
