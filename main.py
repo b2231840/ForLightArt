@@ -12,7 +12,8 @@ with sr.Microphone() as source:
         print("認識結果:", text)
     except sr.UnknownValueError:
         print("認識できませんでした")
-        exit(0)
+        text = "祝福に感謝します(^^)"
+        #exit(0)
 
 
 ##responce
@@ -23,6 +24,7 @@ import torch
 tokenizer = AutoTokenizer.from_pretrained("rinna/japanese-gpt2-medium")
 model = AutoModelForCausalLM.from_pretrained("rinna/japanese-gpt2-medium")
 
+#使わないかも↓
 def get_response(text):
     input_ids = tokenizer.encode(text, return_tensors="pt")
     with torch.no_grad():
@@ -39,7 +41,8 @@ def get_response(text):
     # ユーザーの入力ごと含まれるので削除
     return reply.replace(text, "").strip()
 
-def generate_and_responce(model,toknizer,input_ids,max_length,engine):
+#こっち使うかも↓
+def generate_and_responce(model,tokenizer,input_ids,max_length,engine):
     responces = ""
     for _ in range(max_length):
         with torch.no_grad():
@@ -63,7 +66,8 @@ def generate_and_responce(model,toknizer,input_ids,max_length,engine):
         responces += output_str
 
         #結果を表示
-        engine.say(output_str)
+        if ("<NL>" or "。") in output_str:
+            engine.say(output_str)
         print(output_str.replace("<NL>","\n"), end='', flush = True)
 
         #終了
@@ -88,5 +92,5 @@ input_ids = tokenizer.encode(text, return_tensors="pt")
 res = generate_and_responce(model,tokenizer,input_ids,300,engine)
 
 ##engine.say(res) ##responseの関数で返答
-print("返答結果：",res)
+print("\n\n返答結果：",res)
 engine.runAndWait()
